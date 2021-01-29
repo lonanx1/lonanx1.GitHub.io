@@ -1,0 +1,35 @@
+
+
+<script type="text/javascript">
+	if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
+                    var loadDateTime = new Date();
+					try {
+						window.location = "myaiaspm://singpassmobile/aiasg";
+						window.setTimeout(function() { 
+							var timeOutDateTime = new Date();
+							if (timeOutDateTime - loadDateTime < 5000) {
+								window.location = "https://baidu.com"; 
+							} else {
+								window.close();
+							}
+						}, 500);
+                    } catch (e) {
+						window.location = "https://baidu.com"; 
+					}
+                } else if (navigator.userAgent.match(/android/i)) {
+                    var state = null;
+                    try {
+                        window.location = "myaiaspm://singpassmobile/aiasg"; 
+                        window.setTimeout(function() {
+                            window.location = "https://play.google.com/store/apps/details?id=com.aia.sg.mypage.oneapp.wrapper.myaiasg"; 
+                        }, 500);
+                    } catch (e) {}
+                }
+				else{console.log('PC')}
+</script>
+
+
+
+
+
+
