@@ -1,21 +1,29 @@
 
 
 <script type="text/javascript">
+function openapp(url) {
+                setTimeout(function() {
+                    var e = document.createElement("a");
+                    e.setAttribute("href", url), e.style.display = "none", document.body.appendChild(e);
+                    var n = document.createEvent("HTMLEvents");
+                    n.initEvent("click", !1, !1), e.dispatchEvent(n);
+                }, 0);
+}
+
 	if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
                     var loadDateTime = new Date();
-					try {
-						window.location = "myaiaspm://singpassmobile/aiasg";
-						window.setTimeout(function() { 
-							var timeOutDateTime = new Date();
-							if (timeOutDateTime - loadDateTime < 1000) {
-								window.location = "https://apps.apple.com/sg/app/aia-vitality/id1394337344"; 
-							} else {
-								window.close();
-							}
-						}, 1000);
-                    } catch (e) {
-						window.location = "https://apps.apple.com/sg/app/aia-vitality/id1394337344"; 
-					}
+					
+                    openapp("myaiaspm://singpassmobile/aiasg");
+                    window.setTimeout(function() { 
+                        var timeOutDateTime = new Date();
+						var duration = timeOutDateTime - loadDateTime;
+						console.log(duration)
+                        if (duration <=500) {
+                            window.location = "https://apps.apple.com/sg/app/aia-vitality/id1394337344"; 
+                        } 
+						
+                    }, 500);
+                    
                 } else if (navigator.userAgent.match(/android/i)) {
                     var state = null;
                     try {
