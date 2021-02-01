@@ -1,40 +1,101 @@
-
-
 <script type="text/javascript">
-function openapp(url) {
+		var ua = window.navigator.userAgent;
+        var beginTime = (new Date()).getTime();
+		
+
+        //唤起
+        var deepLink = {
+			isAndroid : ua.match(/android/i),
+            isIOS: ua.match(/(iPhone|iPod|iPad);?/i),             
+			iPhoneVersion : ua.match(/OS (\d+)_\d[_\d]* like Mac OS X/i),
+
+            openUrl: function() {
+				var _this = this;
+                if (_this.isIOS || _this.isAndroid) {
+					_this.iframeOpenAppUrl("myaiaspm://singpassmobile/aiasg");
+                    // if (wakeAppUrl) {
+                    //     _this.iframeOpenAppUrl(wakeAppUrl);
+                    // } else {
+                    //     _this.locationHref(base.webUrl);
+                    // }
+                }
+            },
+
+        
+            
+            
+            checkOpen: function (ctime, cb){
+                var _clickTime = +(new Date());
+                var _count = 0;
+                // 启动定时器，检测累计消耗时间是否延迟时间，或者document.hidden, 或者document.webkitHidden表示已唤起
+                var intHandle = setInterval(function(){
+                    var elsTime = +(new Date()) - _clickTime;
+                    _count += 1;
+                    if (document.hidden || document.webkitHidden || (elsTime > (_count * 50 + 100))) {
+                        clearInterval(intHandle);
+                        cb(1);
+                    } else if (elsTime > ctime) {
+                        clearInterval(intHandle);
+                        cb(0);
+                    }
+                }, 50);
+            },
+            iframeOpenUrl: function(url) {
+                var ifm = document.createElement('iframe');
+                ifm.frameborder = '0';
+                ifm.style.cssText = 'display:none;border:0;width:0;height:0;';
+                document.body.appendChild(ifm);
+                ifm.src = url;
+            },
+
+            // iOS9以上模拟点击唤起APP
+            linkOpenUrl: function(url) {
                 setTimeout(function() {
                     var e = document.createElement("a");
                     e.setAttribute("href", url), e.style.display = "none", document.body.appendChild(e);
                     var n = document.createEvent("HTMLEvents");
                     n.initEvent("click", !1, !1), e.dispatchEvent(n);
                 }, 0);
-}
+            },
 
-	if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
-                    var loadDateTime = new Date();
-					
-                    openapp("myaiaspm://singpassmobile/aiasg");
-                    window.setTimeout(function() { 
-                        var timeOutDateTime = new Date();
-						var duration = timeOutDateTime - loadDateTime;
-						alert(duration)
-                        if (duration <=500) {
-							openapp("https://apps.apple.com/sg/app/aia-vitality/id1394337344");
-                        } 
-						
-                    }, 500);
-                    
-                } else if (navigator.userAgent.match(/android/i)) {
-                    var state = null;
-                    try {
-						openapp("myaiaspm://singpassmobile/aiasg");
-                        window.setTimeout(function() {
-							openapp("https://play.google.com/store/apps/details?id=com.aia.sg.mypage.oneapp.wrapper.myaiasg");
-                        }, 500);
-                    } catch (e) {}
+            // 唤起app
+            iframeOpenAppUrl: function(url) {
+                var _this = this;
+               
+                var iphoneVersion = _this.iPhoneVersion;
+                if (iphoneVersion) {
+                    iphoneVersion = +iphoneVersion[1];
                 }
-				else{console.log('PC')}
+                if (_this.isIOS && iphoneVersion > 8){
+                    _this.linkOpenUrl(url);
+                } else {
+                    _this.iframeOpenUrl(url);
+                }
+                if (_this.isAndroid) {
+                    _this.checkOpen(1000, function() {
+                            setTimeout(function () {
+                                window.location = "https://play.google.com/store/apps/details?id=com.aia.sg.mypage.oneapp.wrapper.myaiasg"; 
+                            }, 100);
+                        
+                    });
+                } else {
+                    _this.checkOpen(1000, function() {
+                        
+                        setTimeout(function () {
+                            window.location = "https://apps.apple.com/sg/app/aia-vitality/id1394337344"; 
+                        }, 100);
+                    });
+                }
+            }
+
+            
+           
+            
+        };
+        deepLink.openUrl();
+
 </script>
+
 
 
 
