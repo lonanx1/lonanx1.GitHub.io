@@ -1,7 +1,7 @@
 <script type="text/javascript">
 		var ua = window.navigator.userAgent;
         var beginTime = (new Date()).getTime();
-		
+		var _clickTime;
 
         //唤起
         var deepLink = {
@@ -25,7 +25,7 @@
             
             
             checkOpen: function (ctime, cb){
-                var _clickTime = +(new Date());
+                
                 var _count = 0;
                 // 启动定时器，检测累计消耗时间是否延迟时间，或者document.hidden, 或者document.webkitHidden表示已唤起
                 var intHandle = setInterval(function(){
@@ -69,12 +69,15 @@
                 var iphoneVersion = _this.iPhoneVersion;
                 if (iphoneVersion) {
                     iphoneVersion = +iphoneVersion[1];
-                }
+				}
+				console.log("iphoneVersion:"+iphoneVersion);
+				_clickTime = +(new Date());
                 if (_this.isIOS && iphoneVersion > 8){
                     _this.linkOpenUrl(url);
                 } else {
                     _this.iframeOpenUrl(url);
-                }
+				}
+				
                 if (_this.isAndroid) {
                     _this.checkOpen(1000, function() {
                             setTimeout(function () {
@@ -100,4 +103,3 @@
         deepLink.openUrl();
 
 </script>
-
