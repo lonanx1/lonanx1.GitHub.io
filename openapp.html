@@ -29,14 +29,18 @@
                 var _count = 0;
                 // 启动定时器，检测累计消耗时间是否延迟时间，或者document.hidden, 或者document.webkitHidden表示已唤起
                 var intHandle = setInterval(function(){
-                    var elsTime = +(new Date()) - _clickTime;
+					var elsTime = +(new Date()) - _clickTime;
+					console.log("elsTime:"+elsTime);
                     _count += 1;
                     if (document.hidden || document.webkitHidden || (elsTime > (_count * 50 + 100))) {
                         clearInterval(intHandle);
-                        cb(1);
+						cb(1);
+						console.log("aaa:");
+						alert('aaaa');
                     } else if (elsTime > ctime) {
                         clearInterval(intHandle);
-                        cb(0);
+						cb(0);
+						console.log("bbb:");
                     }
                 }, 50);
             },
@@ -76,14 +80,15 @@
                             setTimeout(function () {
                                 window.location = "https://play.google.com/store/apps/details?id=com.aia.sg.mypage.oneapp.wrapper.myaiasg"; 
                             }, 100);
-                        
+							console.log("0000:");
                     });
                 } else {
                     _this.checkOpen(1000, function() {
                         
                         setTimeout(function () {
                             window.location = "https://apps.apple.com/sg/app/aia-vitality/id1394337344"; 
-                        }, 100);
+						}, 100);
+						console.log("1111:");
                     });
                 }
             }
@@ -95,10 +100,4 @@
         deepLink.openUrl();
 
 </script>
-
-
-
-
-
-
 
