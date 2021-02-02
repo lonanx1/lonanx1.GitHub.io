@@ -80,7 +80,8 @@
 				
                 if (_this.isAndroid) {
                     _this.checkOpen(1000, function() {
-                            setTimeout(function () {
+                            setTimeout(function (opened) {
+				    alert(opened);
                                 window.location = "https://play.google.com/store/apps/details?id=com.aia.sg.mypage.oneapp.wrapper.myaiasg"; 
                             }, 100);
 							console.log("0000:");
@@ -88,7 +89,8 @@
                 } else {
                     _this.checkOpen(1000, function() {
                         
-                        setTimeout(function () {
+                        setTimeout(function (opened) {
+				alert(opened);
                             window.location = "https://apps.apple.com/sg/app/aia-vitality/id1394337344"; 
 						}, 100);
 						console.log("1111:");
