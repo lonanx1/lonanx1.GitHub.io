@@ -79,17 +79,17 @@
 				}
 				
                 if (_this.isAndroid) {
-                    _this.checkOpen(1000, function() {
-                            setTimeout(function (opened) {
+                    _this.checkOpen(1000, function(opened) {
+                            setTimeout(function () {
 				    alert(opened);
                                 window.location = "https://play.google.com/store/apps/details?id=com.aia.sg.mypage.oneapp.wrapper.myaiasg"; 
                             }, 100);
 							console.log("0000:");
                     });
                 } else {
-                    _this.checkOpen(1000, function() {
+                    _this.checkOpen(1000, function(opened) {
                         
-                        setTimeout(function (opened) {
+                        setTimeout(function () {
 				alert(opened);
                             window.location = "https://apps.apple.com/sg/app/aia-vitality/id1394337344"; 
 						}, 100);
