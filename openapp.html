@@ -72,12 +72,12 @@
             }
             console.log("iphoneVersion:"+iphoneVersion);
             _clickTime = +(new Date());
-            if (_this.isIOS && iphoneVersion > 8){
-                _this.linkOpenUrl(url);
-            } else {
-                _this.iframeOpenUrl(url);
-            }
-
+            // if (_this.isIOS && iphoneVersion > 8){
+            //     _this.linkOpenUrl(url);
+            // } else {
+            //     _this.iframeOpenUrl(url);
+            // }
+            _this.linkOpenUrl(url);
 
             // // 设置3秒的定时下载任务，3秒之后下载app
             // downloader = setTimeout(function(){
