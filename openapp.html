@@ -24,7 +24,7 @@
     
         
         
-        checkOpen: function (ctime, cb){ 
+        checkOpen: function (ctime, cb){
             
             var _count = 0;
             // 启动定时器，检测累计消耗时间是否延迟时间，或者document.hidden, 或者document.webkitHidden表示已唤起
@@ -79,46 +79,52 @@
             }
 
 
-            // 设置3秒的定时下载任务，3秒之后下载app
-            downloader = setTimeout(function(){
-                if (_this.isAndroid){
-                    window.location = "https://play.google.com/store/apps/details?id=com.aia.sg.mypage.oneapp.wrapper.myaiasg"; 
-                }
-                if (_this.isIOS){
-                    window.location = "https://apps.apple.com/sg/app/aia-vitality/id1394337344"; 
-                }
-                console.log("open download end")
+            // // 设置3秒的定时下载任务，3秒之后下载app
+            // downloader = setTimeout(function(){
+            //     if (_this.isAndroid){
+            //         window.location = "https://play.google.com/store/apps/details?id=com.aia.sg.mypage.oneapp.wrapper.myaiasg"; 
+            //     }
+            //     if (_this.isIOS){
+            //         window.location = "https://apps.apple.com/sg/app/aia-vitality/id1394337344"; 
+            //     }
+            //     console.log("open download end")
                 
-            }, 3000);
+            // }, 3000);
 
-            document.addEventListener('visibilitychange webkitvisibilitychange', function () {
-            // 如果页面隐藏，推测打开scheme成功，清除下载任务
-            if (document.hidden || document.webkitHidden) {
-                    clearTimeout(downloader);
-                }
-            });
+            // document.addEventListener('visibilitychange webkitvisibilitychange', function () {
+            // // 如果页面隐藏，推测打开scheme成功，清除下载任务
+            // if (document.hidden || document.webkitHidden) {
+            //         clearTimeout(downloader);
+            //     }
+            // });
             
-            // if (_this.isAndroid) {
-            //     _this.checkOpen(1000, function() {
-            //             setTimeout(function () {
-            //                 if(confirm("would you like to install MyAIA app?")){
-            //                     window.location = "https://play.google.com/store/apps/details?id=com.aia.sg.mypage.oneapp.wrapper.myaiasg"; 
-            //                 }
+            if (_this.isAndroid) {
+                _this.checkOpen(1000, function() {
+                        setTimeout(function () {
+                            if(confirm("would you like to install MyAIA app?")){
+                                window.location = "https://play.google.com/store/apps/details?id=com.aia.sg.mypage.oneapp.wrapper.myaiasg"; 
+                            }
+                            else{
+                                window.location = "https://myaia.aia.com.sg/";
+                            }
                             
-            //             }, 100);
-            //             console.log("0000:");
-            //     });
-            // } else {
-            //     _this.checkOpen(1000, function() {
+                        }, 100);
+                        console.log("0000:");
+                });
+            } else {
+                _this.checkOpen(1000, function() {
                     
-            //         setTimeout(function () {
-            //             if(confirm("would you like to install MyAIA app?")){
-            //                 window.location = "https://apps.apple.com/sg/app/aia-vitality/id1394337344"; 
-            //             }
-            //         }, 100);
-            //         console.log("1111:");
-            //     });
-            // }
+                    setTimeout(function () {
+                        if(confirm("would you like to install MyAIA app?")){
+                            window.location = "https://apps.apple.com/sg/app/aia-vitality/id1394337344"; 
+                        }
+                        else{
+                                window.location = "https://myaia.aia.com.sg/";
+                        }
+                    }, 100);
+                    console.log("1111:");
+                });
+            }
         }
 
         
