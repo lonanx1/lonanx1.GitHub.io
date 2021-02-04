@@ -104,7 +104,7 @@
             // });
             
             if (_this.isAndroid) {
-                _this.checkOpen(1000, function() {
+                _this.checkOpen(10000, function() {
                         setTimeout(function () {
                             if(confirm("would you like to install MyAIA app?")){
                                 window.location = "https://play.google.com/store/apps/details?id=com.aia.sg.mypage.oneapp.wrapper.myaiasg"; 
@@ -117,7 +117,7 @@
                         console.log("0000:");
                 });
             } else {
-                _this.checkOpen(1000, function() {
+                _this.checkOpen(10000, function() {
                     
                     setTimeout(function () {
                         if(confirm("would you like to install MyAIA app?")){
