@@ -141,5 +141,23 @@ function openAndroid(){
 </script>
 <body>
     <button type="button" onclick="openAndroid()" style="height: 40px; width: 300px;">Click Me!</button>
+<SCRIPT>
+window.οnerrοr=fnErrorTrap;
+function fnErrorTrap(sMsg,sUrl,sLine){
+oErrorLog.innerHTML="<b>An error was thrown and caught.</b><p>";
+oErrorLog.innerHTML+="Error: " + sMsg + "<br>";
+oErrorLog.innerHTML+="Line: " + sLine + "<br>";
+oErrorLog.innerHTML+="URL: " + sUrl + "<br>";
+return false;
+}
+function fnThrow(){
+eval(oErrorCode.value);
+}
+</SCRIPT>
+<INPUT TYPE="text" ID=oErrorCode VALUE="someObject.someProperty=true;">
+<INPUT TYPE="button" VALUE="Throw Error" οnclick="fnThrow()">
+<P>
+<DIV ID="oErrorLog">
+</DIV>
 
 </body>
