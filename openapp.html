@@ -1,5 +1,3 @@
-
-
 <script type="text/javascript">
     var ua = window.navigator.userAgent;
     var beginTime = (new Date()).getTime();
@@ -14,7 +12,8 @@
         openUrl: function() {
             var _this = this;
             if (_this.isIOS || _this.isAndroid) {
-                window.location = "myaiaspm://singpassmobile/aiasg"
+                //window.location = "myaiaspm://singpassmobile/aiasg"
+				_this.linkOpenUrl("myaiaspm://singpassmobile/aiasg");
 //                 _this.iframeOpenAppUrl("myaiaspm://singpassmobile/aiasg");
                 // if (wakeAppUrl) {
                 //     _this.iframeOpenAppUrl(wakeAppUrl);
@@ -160,6 +159,16 @@ return false;
 function fnThrow(){
 eval(oErrorCode.value);
 }
+try{
      deepLink.openUrl();
+	 }
+	catch(e)
+
+    {
+	var oErrorLog = document.getElementById("oErrorLog");
+oErrorLog.innerHTML="<b>"+e.description+"</b><p>";
+        //打印错误结果
+
+    } 
 </script>
 </body>
