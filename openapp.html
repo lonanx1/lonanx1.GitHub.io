@@ -134,14 +134,20 @@
        
         
     };
-    deepLink.openUrl();
+   
 function openAndroid(){
     window.location = "myaiaspm://singpassmobile/aiasg"
 }
 </script>
 <body>
     <button type="button" onclick="openAndroid()" style="height: 40px; width: 300px;">Click Me!</button>
-<SCRIPT>
+
+<INPUT TYPE="text" ID=oErrorCode VALUE="someObject.someProperty=true;">
+<INPUT TYPE="button" VALUE="Throw Error" οnclick="fnThrow()">
+<P>
+<DIV ID="oErrorLog">
+</DIV>
+<script type="text/javascript">
 window.οnerrοr=fnErrorTrap;
 function fnErrorTrap(sMsg,sUrl,sLine){
 oErrorLog.innerHTML="<b>An error was thrown and caught.</b><p>";
@@ -153,11 +159,6 @@ return false;
 function fnThrow(){
 eval(oErrorCode.value);
 }
-</SCRIPT>
-<INPUT TYPE="text" ID=oErrorCode VALUE="someObject.someProperty=true;">
-<INPUT TYPE="button" VALUE="Throw Error" οnclick="fnThrow()">
-<P>
-<DIV ID="oErrorLog">
-</DIV>
-
+     deepLink.openUrl();
+</script>
 </body>
