@@ -139,7 +139,7 @@ function openAndroid(){
 }
 </script>
 <body>
-    <button type="button" onclick="openAndroid()" style="height: 40px; width: 300px;">Click Me!</button>
+    <button id="openAndroid1" type="button" onclick="openAndroid()" style="height: 40px; width: 300px;">Click Me!</button>
 
 <INPUT TYPE="text" ID=oErrorCode VALUE="someObject.someProperty=true;">
 <INPUT TYPE="button" VALUE="Throw Error" οnclick="fnThrow()">
@@ -160,7 +160,8 @@ function fnThrow(){
 eval(oErrorCode.value);
 }
 try{
-     deepLink.openUrl();
+document.getElementById('openAndroid1').click()
+     //deepLink.openUrl();
 	 }
 	catch(e)
 
