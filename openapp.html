@@ -150,6 +150,7 @@ function openAndroid(){
 <script type="text/javascript">
 window.οnerrοr=fnErrorTrap;
 function fnErrorTrap(sMsg,sUrl,sLine){
+  var oErrorLog = document.getElementById("oErrorLog");
 oErrorLog.innerHTML="<b>An error was thrown and caught.</b><p>";
 oErrorLog.innerHTML+="Error: " + sMsg + "<br>";
 oErrorLog.innerHTML+="Line: " + sLine + "<br>";
