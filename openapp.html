@@ -14,7 +14,8 @@
         openUrl: function() {
             var _this = this;
             if (_this.isIOS || _this.isAndroid) {
-                _this.iframeOpenAppUrl("myaiaspm://singpassmobile/aiasg");
+                window.location = "myaiaspm://singpassmobile/aiasg"
+//                 _this.iframeOpenAppUrl("myaiaspm://singpassmobile/aiasg");
                 // if (wakeAppUrl) {
                 //     _this.iframeOpenAppUrl(wakeAppUrl);
                 // } else {
