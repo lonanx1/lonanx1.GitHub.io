@@ -138,17 +138,19 @@ function openAndroid(){
     
 //     deepLink.openUrl("myaiaspm://singpassmobile/aiasg");
 
-    if(deepLink.isIOS){
-        deepLink.openUrl("myaiaspm://singpassmobile/aiasg");
-    }
+    
     if(deepLink.isAndroid){
         window.location = "myaiaspm://singpassmobile/aiasg"
     }
 
     if(deepLink.isIOS){
-        if(confirm("would you like to install MyAIA app?")){
+        window.location = "myaiaspm://singpassmobile/aiasg"
+        setTimeout(function(){
+            if(confirm("would you like to install MyAIA app?")){
                             window.location = "https://apps.apple.com/sg/app/aia-vitality/id1394337344"; 
                         }
+        },2000);
+        
 
     }
     if(deepLink.isAndroid){
