@@ -13,8 +13,8 @@
             var _this = this;
             if (_this.isIOS || _this.isAndroid) {
                 //window.location = "myaiaspm://singpassmobile/aiasg"
-				_this.linkOpenUrl("myaiaspm://singpassmobile/aiasg");
-//                 _this.iframeOpenAppUrl("myaiaspm://singpassmobile/aiasg");
+				// _this.linkOpenUrl("myaiaspm://singpassmobile/aiasg");
+                _this.iframeOpenAppUrl("myaiaspm://singpassmobile/aiasg");
                 // if (wakeAppUrl) {
                 //     _this.iframeOpenAppUrl(wakeAppUrl);
                 // } else {
@@ -74,59 +74,59 @@
             }
             console.log("iphoneVersion:"+iphoneVersion);
             _clickTime = +(new Date());
-            // if (_this.isIOS && iphoneVersion > 8){
-            //     _this.linkOpenUrl(url);
-            // } else {
-            //     _this.iframeOpenUrl(url);
-            // }
-            _this.linkOpenUrl(url);
-
-            // // 设置3秒的定时下载任务，3秒之后下载app
-            // downloader = setTimeout(function(){
-            //     if (_this.isAndroid){
-            //         window.location = "https://play.google.com/store/apps/details?id=com.aia.sg.mypage.oneapp.wrapper.myaiasg"; 
-            //     }
-            //     if (_this.isIOS){
-            //         window.location = "https://apps.apple.com/sg/app/aia-vitality/id1394337344"; 
-            //     }
-            //     console.log("open download end")
-                
-            // }, 3000);
-
-            // document.addEventListener('visibilitychange webkitvisibilitychange', function () {
-            // // 如果页面隐藏，推测打开scheme成功，清除下载任务
-            // if (document.hidden || document.webkitHidden) {
-            //         clearTimeout(downloader);
-            //     }
-            // });
-            
-            if (_this.isAndroid) {
-                _this.checkOpen(2000, function() {
-                        setTimeout(function () {
-                            if(confirm("would you like to install MyAIA app?")){
-                                window.location = "https://play.google.com/store/apps/details?id=com.aia.sg.mypage.oneapp.wrapper.myaiasg"; 
-                            }
-                            else{
-                                window.location = "https://myaia.aia.com.sg/";
-                            }
-                            
-                        }, 100);
-                        console.log("0000:");
-                });
+            if (_this.isIOS && iphoneVersion > 8){
+                _this.linkOpenUrl(url);
             } else {
-                _this.checkOpen(2000, function() {
-                    
-                    setTimeout(function () {
-                        if(confirm("would you like to install MyAIA app?")){
-                            window.location = "https://apps.apple.com/sg/app/aia-vitality/id1394337344"; 
-                        }
-                        else{
-                                window.location = "https://myaia.aia.com.sg/";
-                        }
-                    }, 100);
-                    console.log("1111:");
-                });
+                _this.iframeOpenUrl(url);
             }
+           
+
+            // 设置3秒的定时下载任务，3秒之后下载app
+            downloader = setTimeout(function(){
+                if (_this.isAndroid){
+                    window.location = "https://play.google.com/store/apps/details?id=com.aia.sg.mypage.oneapp.wrapper.myaiasg"; 
+                }
+                if (_this.isIOS){
+                    window.location = "https://apps.apple.com/sg/app/aia-vitality/id1394337344"; 
+                }
+                console.log("open download end")
+                
+            }, 3000);
+
+            document.addEventListener('visibilitychange webkitvisibilitychange', function () {
+            // 如果页面隐藏，推测打开scheme成功，清除下载任务
+            if (document.hidden || document.webkitHidden) {
+                    clearTimeout(downloader);
+                }
+            });
+            
+            // if (_this.isAndroid) {
+            //     _this.checkOpen(2000, function() {
+            //             setTimeout(function () {
+            //                 if(confirm("would you like to install MyAIA app?")){
+            //                     window.location = "https://play.google.com/store/apps/details?id=com.aia.sg.mypage.oneapp.wrapper.myaiasg"; 
+            //                 }
+            //                 else{
+            //                     window.location = "https://myaia.aia.com.sg/";
+            //                 }
+                            
+            //             }, 100);
+            //             console.log("0000:");
+            //     });
+            // } else {
+            //     _this.checkOpen(2000, function() {
+                    
+            //         setTimeout(function () {
+            //             if(confirm("would you like to install MyAIA app?")){
+            //                 window.location = "https://apps.apple.com/sg/app/aia-vitality/id1394337344"; 
+            //             }
+            //             else{
+            //                     window.location = "https://myaia.aia.com.sg/";
+            //             }
+            //         }, 100);
+            //         console.log("1111:");
+            //     });
+            // }
         }
 
         
@@ -137,7 +137,13 @@
 function openAndroid(){
     
     deepLink.openUrl("myaiaspm://singpassmobile/aiasg");
-//     window.location = "myaiaspm://singpassmobile/aiasg"
+
+    // if(deepLink.isIOS){
+    //     deepLink.openUrl("myaiaspm://singpassmobile/aiasg");
+    // }
+    // if(deepLink.isAndroid){
+    //     window.location = "myaiaspm://singpassmobile/aiasg"
+    // }
 
     if(deepLink.isIOS){
         if(confirm("would you like to install MyAIA app?")){
