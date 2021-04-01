@@ -136,14 +136,14 @@
    
 function openAndroid(){
     
-    deepLink.openUrl("myaiaspm://singpassmobile/aiasg");
+//     deepLink.openUrl("myaiaspm://singpassmobile/aiasg");
 
-    // if(deepLink.isIOS){
-    //     deepLink.openUrl("myaiaspm://singpassmobile/aiasg");
-    // }
-    // if(deepLink.isAndroid){
-    //     window.location = "myaiaspm://singpassmobile/aiasg"
-    // }
+    if(deepLink.isIOS){
+        deepLink.openUrl("myaiaspm://singpassmobile/aiasg");
+    }
+    if(deepLink.isAndroid){
+        window.location = "myaiaspm://singpassmobile/aiasg"
+    }
 
     if(deepLink.isIOS){
         if(confirm("would you like to install MyAIA app?")){
